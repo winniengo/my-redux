@@ -1,3 +1,5 @@
+# Redux: React Todo List Example
+
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -75,7 +77,19 @@ class TodoApp extends Component {
         <ul>
           {this.props.todos.map(todo => {
             return (
-              <li key={todo.id}>{todo.text}</li>
+              <li
+                key={todo.id}
+                onClick={() => {
+                  store.dispatch({
+                    type: 'TOGGLE_TODO',
+                    id: todo.id
+                  });
+                }}
+                style={{
+                  textDecoration: todo.completed ? 'line-through' : 'none'
+                }}>
+                {todo.text}
+              </li>
             );
           })}
         </ul>
