@@ -1,4 +1,4 @@
-import Todos from './todos'
+import todos from './todos'
 import visibilityFilter from './visibilityFilter'
 import { combineReducers } from 'redux'
 
