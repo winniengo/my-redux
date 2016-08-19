@@ -1,4 +1,4 @@
-# Fruit Stand App
+# Fruit Stand Demo
 
 Basic Redux app with a `reducer`, actions and `store`. No React components.
 
