@@ -1,4 +1,4 @@
-import { REQUEST_TODOS, receiveTodos, CREATE_TODO, receiveTodo, UPDATE_TODO, DESTROY_TODO, removeTodo } from '../actions/todos.js';
+import { REQUEST_TODOS, receiveTodos, CREATE_TODO, receiveTodo, DESTROY_TODO, removeTodo, TOGGLE_TODO } from '../actions/todos.js';
 import { fetchTodos, createTodo, updateTodo, destroyTodo } from '../util/todo_api_util';
 
 const todoMiddleware = store => next => action => {
@@ -14,13 +14,13 @@ const todoMiddleware = store => next => action => {
       success = data => store.dispatch(receiveTodo(data));
       createTodo(action.todo, success, error);
       break;
-    case UPDATE_TODO:
-      success = data => store.dispatch(receiveTodo(data));
-      updateTodo(action.todo, success, error);
-      break;
     case DESTROY_TODO:
       success = data => store.dispatch(removeTodo(data));
       destroyTodo(action.id, success, error);
+      break;
+    case TOGGLE_TODO: // update
+      success = data => store.dispatch(receiveTodo(data));
+      updateTodo(action.todo, success, error);
       break;
     default:
       next(action);
