@@ -7,7 +7,7 @@ import Root from './components/root';
 // testing
 import { fetchTodos } from './util/todo_api_util';
 import { allTodos } from './reducers/selector';
-import { requestTodos, createTodo } from './actions/todos';
+import { requestTodos, createTodo, removeTodo, destroyTodo } from './actions/todos';
 
 const store = configureStore();
 
@@ -20,3 +20,5 @@ window.store = store;
 window.allTodos = allTodos;
 window.requestTodos = requestTodos;
 window.createTodo = createTodo;
+window.removeTodo = removeTodo;
+window.destroyTodo = destroyTodo;

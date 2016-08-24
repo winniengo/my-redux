@@ -16,3 +16,22 @@ export const createTodo = (todo, success, error) => {
     error
   });
 };
+
+export const updateTodo = (todo, success, error) => {
+  $.ajax({
+    method: 'PATCH',
+    url: `api/todos/${todo.id}`,
+    data: {todo},
+    success,
+    error
+  });
+};
+
+export const destroyTodo = (id, success, error) => {
+  $.ajax({
+    method: 'DELETE',
+    url: `api/todos/${id}`,
+    success,
+    error
+  });
+};
