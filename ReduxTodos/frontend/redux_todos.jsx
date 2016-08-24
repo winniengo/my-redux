@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
+
+import Root from './components/root';
+
 // testing
 import { fetchTodos } from './util/todo_api_util';
 import { allTodos } from './reducers/selector';
@@ -10,7 +13,7 @@ const store = configureStore();
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
-  ReactDOM.render(<div>ReduxTodos</div>, root);
+  ReactDOM.render(<Root store={store} />, root);
 });
 
 window.store = store;
