@@ -1,5 +1,3 @@
-Bench.delete_all
-
 Bench.create!(
   description: "alamo square, many dogs",
   seating: 4,

@@ -3,5 +3,5 @@ Rails.application.routes.draw do
     resources :benches, only: [:index, :show, :create]
   end
 
-  route "static_pages#root"
+  root "static_pages#root"
 end
