@@ -1,10 +1,39 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-const BenchMap = (props) => {
-  return (
-    <div className='bench-map'>
-    </div>
-  );
+import MarkerManager from '../../util/marker_manager';
+
+class BenchMap extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    const mapDOMNode = this.refs.map; // find map on the DOM
+
+    const mapOptions = { // set map to show SF
+      center: {
+        lat: 37.7758,
+        lng: -122.435
+      },
+      zoom: 13
+    };
+
+    // wrap the mapDOMNode in a Google Map
+    this.map = new google.maps.Map(mapDOMNode, mapOptions);
+    this.MarkerManager = new MarkerManager(this.map);
+    this.MarkerManager.updateMarkers(this.props.benches);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.MarkerManager.updateMarkers(nextProps.benches);
+  }
+
+  render () {
+    return (
+      <div id='bench-map' ref='map'>
+      </div>
+    )
+  }
 };
 
 export default BenchMap;
