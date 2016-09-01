@@ -22,10 +22,35 @@ class BenchMap extends React.Component {
     this.map = new google.maps.Map(mapDOMNode, mapOptions);
     this.MarkerManager = new MarkerManager(this.map);
     this.MarkerManager.updateMarkers(this.props.benches);
+    this._registerListeners();
   }
 
   componentWillReceiveProps(nextProps) {
     this.MarkerManager.updateMarkers(nextProps.benches);
+  }
+
+  _registerListeners() {
+    console.log(this.props.updateBounds);
+    google.maps.event.addListener(this.map, 'idle', () => { // idle event listener
+      const { north, south, east, west } = this.map.getBounds().toJSON();
+      const bounds = {
+        northEast: {
+          lat: north,
+          lng: east
+        },
+        southWest: {
+          lat: south,
+          lng: west
+        }
+      };
+
+      this.props.updateBounds(bounds);
+    });
+
+    google.maps.event.addListener(this.map, 'click', e => { // click event listener
+      console.log(e.latLng);
+    })
+
   }
 
   render () {

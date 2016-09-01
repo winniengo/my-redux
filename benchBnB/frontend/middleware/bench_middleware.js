@@ -6,7 +6,7 @@ const benchMiddleware = store => next => action => {
   switch(action.type) {
     case REQUEST_BENCHES:
       const success = data => store.dispatch(receiveBenches(data));
-      fetchBenches(success, error);
+      fetchBenches(action.filters, success, error);
       return next(action);
     default:
       return next(action);
