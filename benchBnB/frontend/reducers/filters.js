@@ -8,7 +8,8 @@ const initialState = {
 const filters = (state = initialState, action) => {
   switch(action.type) {
     case UPDATE_BOUNDS:
-      return merge(state, {bounds: action.bounds});
+      const bounds = action.bounds;
+      return merge(state, {bounds});
     default:
       return state;
   }

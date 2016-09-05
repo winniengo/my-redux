@@ -30,7 +30,6 @@ class BenchMap extends React.Component {
   }
 
   _registerListeners() {
-    console.log(this.props.updateBounds);
     google.maps.event.addListener(this.map, 'idle', () => { // idle event listener
       const { north, south, east, west } = this.map.getBounds().toJSON();
       const bounds = {
@@ -46,18 +45,13 @@ class BenchMap extends React.Component {
 
       this.props.updateBounds(bounds);
     });
-
-    google.maps.event.addListener(this.map, 'click', e => { // click event listener
-      console.log(e.latLng);
-    })
-
   }
 
   render () {
     return (
       <div id='bench-map' ref='map'>
       </div>
-    )
+    );
   }
 };
 

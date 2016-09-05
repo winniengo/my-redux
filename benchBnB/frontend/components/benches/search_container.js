@@ -4,8 +4,8 @@ import { allBenches } from '../../reducers/selectors';
 import { requestBenches } from '../../actions/bench_actions';
 import { updateBounds } from '../../actions/filter_actions';
 
-const mapStateToProps = (state) => ({
-  benches: allBenches(state)
+const mapStateToProps = ({ benches }) => ({
+  benches: allBenches(benches)
 });
 
 const mapDispatchToProps = dispatch => ({

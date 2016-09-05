@@ -6,25 +6,23 @@ export default class MarkerManager {
 
   updateMarkers(benches) {
     this.benches = benches;
+    this.benchIds = this.benches.map(bench => bench.id);
+
     this._benchesToAdd().forEach(this._createMarker.bind(this));
     this._markersToRemove().forEach(this._removeMarker.bind(this));
   }
 
   _benchesToAdd() {
     const currentBenchIds = this.markers.map(marker => marker.benchId);
-    const newBenches = this.benches;
-    const newBenchIds = Object.keys(newBenches);
 
-    return newBenchIds.reduce((collection, benchId) => {
-      if (!currentBenchIds.includes(benchId)) {
-        return (collection.concat([newBenches[benchId]]));
-      }
-    }, []);
+    return this.benches.filter(bench => (
+      !currentBenchIds.includes(bench.id)
+    ));
   }
 
   _markersToRemove() {
     return this.markers.filter(marker => (
-      !this.benches.hasOwnProperty(marker.benchId)
+      !this.benchIds.includes(marker.benchId)
     ));
   }
 
@@ -35,11 +33,10 @@ export default class MarkerManager {
       benchId: id,
       position
     });
-
     this.markers.push(marker);
   }
 
-  _removeMarker(marker) {
+  _removeMarker(marker) { // receives marker object
     const idx = this.markers.indexOf(marker);
     this.markers[idx].setMap(null);
     this.markers.splice(idx, 1);

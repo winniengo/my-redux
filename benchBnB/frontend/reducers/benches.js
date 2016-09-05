@@ -5,7 +5,7 @@ const benches = (state = {}, action) => {
   console.log(action);
   switch(action.type) {
     case RECEIVE_BENCHES:
-      return merge({}, state, action.benches);
+      return merge({}, action.benches);
     default:
       return state;
   }
