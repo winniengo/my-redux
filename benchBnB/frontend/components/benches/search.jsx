@@ -3,7 +3,7 @@ import BenchMap from './bench_map';
 import BenchIndex from './bench_index';
 
 const Search = ({ benches, requestBenches, updateBounds }) => (
-  <div>
+  <div className='search'>
     <BenchMap benches={benches} updateBounds={updateBounds} />
     <BenchIndex benches={benches} requestBenches={requestBenches} />
   </div>

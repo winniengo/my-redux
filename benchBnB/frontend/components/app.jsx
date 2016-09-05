@@ -1,11 +1,8 @@
 import React from 'react';
 
-import BenchIndexContainer from './benches/bench_index_container';
-import SearchContainer from './benches/search_container';
-
-const App = () => (
+const App = ({ children }) => (
   <div className='app'>
-    <SearchContainer />
+    {children}
   </div>
 );
 
