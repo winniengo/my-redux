@@ -56,7 +56,6 @@ class BenchMap extends React.Component {
   }
 
   _handleClick(coords) {
-    console.log(coords);
     this.props.router.push({
       pathname: "benches/new",
       query: coords
