@@ -1,12 +1,15 @@
 import { connect } from 'react-redux';
 import BenchForm from './bench_form';
 
-const mapStateToProps = () => ({
+import { createBench } from '../../actions/bench_actions';
 
+const mapStateToProps = (state, ownProps) => ({
+  lat: ownProps.location.query.lat,
+  lng: ownProps.location.query.lng
 });
 
-const mapDispatchToProps = () => ({
-
+const mapDispatchToProps = (dispatch) => ({
+  createBench: bench => dispatch(createBench(bench))
 });
 
 export default connect(

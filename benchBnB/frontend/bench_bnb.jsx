@@ -7,7 +7,7 @@ import Root from './components/root';
 // for testing
 import { requestBenches } from './actions/bench_actions';
 import { allBenches } from './reducers/selectors';
-import { fetchBenches } from './util/bench_api';
+import { fetchBenches, createBench } from './util/bench_api';
 import MarkerManager from './util/marker_manager';
 
 const store = configureStore();
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // for testing
 window.store = store;
 window.requestBenches = requestBenches;
+window.createBench = createBench;
 window.allBenches = allBenches;
 window.fetchBenches = fetchBenches;
 window.MarkerManager = MarkerManager;

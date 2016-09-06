@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { withRouter } from 'react-router';
 
 import MarkerManager from '../../util/marker_manager';
 
@@ -30,7 +31,7 @@ class BenchMap extends React.Component {
   }
 
   _registerListeners() {
-    google.maps.event.addListener(this.map, 'idle', () => { // idle event listener
+    google.maps.event.addListener(this.map, 'idle', () => {
       const { north, south, east, west } = this.map.getBounds().toJSON();
       const bounds = {
         northEast: {
@@ -45,6 +46,21 @@ class BenchMap extends React.Component {
 
       this.props.updateBounds(bounds);
     });
+
+    google.maps.event.addListener(this.map, 'click', (e) => {
+      this._handleClick({
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng()
+      });
+    });
+  }
+
+  _handleClick(coords) {
+    console.log(coords);
+    this.props.router.push({
+      pathname: "benches/new",
+      query: coords
+    });
   }
 
   render () {
@@ -55,4 +71,4 @@ class BenchMap extends React.Component {
   }
 };
 
-export default BenchMap;
+export default withRouter(BenchMap);
