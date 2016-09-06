@@ -19,7 +19,7 @@ Bench.create!(
   lng: -122.511281,
 )
 
-# User.create!(
-#   username: "guest",
-#   password: "password"
-# )
+User.create!(
+  username: "guest",
+  password: "password"
+)
