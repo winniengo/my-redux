@@ -42,7 +42,8 @@ class BenchForm extends React.Component {
           <input
             type='text'
             value={this.state.description}
-            onChange={this.update('description')} />
+            onChange={this.update('description')}
+            className='bench-form-input' />
 
           <label className='bench-form-field'>
             # of Seats:
@@ -50,7 +51,8 @@ class BenchForm extends React.Component {
           <input
             type='text'
             value={this.state.seating}
-            onChange={this.update('seating')} />
+            onChange={this.update('seating')}
+            className='bench-form-input' />
 
           <label className='bench-form-field'>
             Latitude
@@ -58,6 +60,7 @@ class BenchForm extends React.Component {
           <input
             type='number'
             value={this.state.lat}
+            className='bench-form-input'
             disabled />
 
           <label className='bench-form-field'>
@@ -66,9 +69,10 @@ class BenchForm extends React.Component {
           <input
             type='number'
             value={this.state.lng}
+            className='bench-form-input'
             disabled />
 
-          <input className='bench-form-button' type='submit' value='Submit' />
+          <input className='bench-form-submit' type='submit' value='Submit' />
         </form>
       </div>
     );
