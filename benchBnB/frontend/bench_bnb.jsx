@@ -10,6 +10,7 @@ import { allBenches } from './reducers/selectors';
 import { fetchBenches, createBench } from './util/bench_api';
 import MarkerManager from './util/marker_manager';
 import { signUp, logIn, logOut } from './util/session_api';
+import { clearErrors } from './actions/session_actions';
 
 const store = configureStore();
 
@@ -28,3 +29,4 @@ window.MarkerManager = MarkerManager;
 window.signUp = signUp;
 window.logIn = logIn;
 window.logOut = logOut;
+window.clearErrors = clearErrors;

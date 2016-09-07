@@ -5,11 +5,15 @@ import {
   LOGOUT,
   SIGNUP } from '../actions/session_actions';
 
-import { login, signup, logout } from '../util/session_api_util';
+import { login, signup, logout } from '../util/session_api';
+import { hashHistory } from 'react-router';
 
 const sessionMiddleware = store => next => action => {
   const error = e => store.dispatch(receiveErrors(e.responseJSON));
-  const success = data => store.dispatch(receiveCurrentUser(data))
+  const success = data => {
+    store.dispatch(receiveCurrentUser(data));
+    hashHistory.push('/');
+  }
 
   switch(action.type) {
     case LOGIN:

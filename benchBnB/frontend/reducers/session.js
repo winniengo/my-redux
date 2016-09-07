@@ -1,7 +1,8 @@
 import {
   LOGOUT,
   RECEIVE_CURRENT_USER,
-  RECEIVE_ERRORS } from '../actions/session_actions';
+  RECEIVE_ERRORS,
+  CLEAR_ERRORS } from '../actions/session_actions';
 
 import merge from 'lodash/merge';
 
@@ -11,6 +12,7 @@ const nullUser = Object.freeze({
 });
 
 const session = (state = nullUser, action) => {
+  console.log(action.type);
   switch(action.type) {
     case LOGOUT:
       return merge({}. nullUser);
@@ -20,6 +22,9 @@ const session = (state = nullUser, action) => {
     case RECEIVE_ERRORS:
       const errors = action.errors;
       return merge({}, nullUser, {errors});
+    case CLEAR_ERRORS:
+      // TODO
+      return state;
     default:
       return state;
   }
