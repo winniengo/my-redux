@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import AppRouter from './router';
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = ({ session }) => ({
+  currentUser: session.currentUser
 });
 
 const mapDispatchToProps = () => ({

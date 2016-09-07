@@ -12,15 +12,24 @@ import MarkerManager from './util/marker_manager';
 import { signUp, logIn, logOut } from './util/session_api';
 import { clearErrors } from './actions/session_actions';
 
-const store = configureStore();
 
 document.addEventListener('DOMContentLoaded', () => {
+  let store;
+
+  if (window.currentUser) {
+    const preloadedState = {session: {currentUser: window.currentUser}}
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
+
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
+
+  window.store = store; // for testing
 });
 
 // for testing
-window.store = store;
 window.requestBenches = requestBenches;
 window.createBench = createBench;
 window.allBenches = allBenches;

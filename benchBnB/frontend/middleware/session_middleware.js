@@ -20,7 +20,11 @@ const sessionMiddleware = store => next => action => {
       login(action.user, success, error);
       return next(action);
     case LOGOUT:
-      logout(() => next(action));
+      logout(() => {
+        next(action);
+        // console.log(store.getState());
+        hashHistory.push('/login');
+      });
       break;
     case SIGNUP:
       signup(action.user, success, error)
