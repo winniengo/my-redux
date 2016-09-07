@@ -4,7 +4,8 @@ import { allBenches } from '../../reducers/selectors';
 import { requestBenches } from '../../actions/bench_actions';
 import { updateBounds } from '../../actions/filter_actions';
 
-const mapStateToProps = ({ benches }) => ({
+const mapStateToProps = ({ benches, session }) => ({
+  loggedIn: Boolean(session.currentUser),
   benches: allBenches(benches)
 });
 

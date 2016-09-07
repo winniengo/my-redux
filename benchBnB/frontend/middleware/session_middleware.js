@@ -22,7 +22,6 @@ const sessionMiddleware = store => next => action => {
     case LOGOUT:
       logout(() => {
         next(action);
-        // console.log(store.getState());
         hashHistory.push('/login');
       });
       break;

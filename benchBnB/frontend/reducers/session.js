@@ -15,7 +15,7 @@ const session = (state = nullUser, action) => {
   console.log(action.type);
   switch(action.type) {
     case LOGOUT:
-      return merge({}. nullUser);
+      return Object.assign({}, nullUser);
     case RECEIVE_CURRENT_USER:
       const currentUser = action.currentUser;
       return merge({}, nullUser, {currentUser});
@@ -23,8 +23,9 @@ const session = (state = nullUser, action) => {
       const errors = action.errors;
       return merge({}, nullUser, {errors});
     case CLEAR_ERRORS:
-      // TODO
-      return state;
+      return Object.assign({}, state, {
+        errors: []
+      });
     default:
       return state;
   }
